@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 5141613178d7c6142a45591e4aa58e19
+timeCreated: 1528966102
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: KelmscottRoman
+  fontNames:
+  - KelmscottRoman
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

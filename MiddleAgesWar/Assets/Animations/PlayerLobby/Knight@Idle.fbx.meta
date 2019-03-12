@@ -1,0 +1,388 @@
+fileFormatVersion: 2
+guid: d66206a929ba9c64d9175b45a9ab2476
+timeCreated: 1514543340
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: chest
+    100002: head
+    100004: hips
+    100006: Joint_3
+    100008: Joint_3_2
+    100010: Joint_3_2_2
+    100012: Joint_3_2_3
+    100014: Joint_3_3
+    100016: Joint_3_3_2
+    100018: Joint_3_4
+    100020: Joint_3_4_2
+    100022: Joint_3_5
+    100024: Joint_3_5_2
+    100026: //RootNode
+    100028: L_anke
+    100030: L_arm
+    100032: L_elbow
+    100034: L_foot
+    100036: L_knee
+    100038: L_leg
+    100040: L_middle1
+    100042: L_middle2
+    100044: L_middle3
+    100046: L_pink1
+    100048: L_pink2
+    100050: L_pink3
+    100052: L_point1
+    100054: L_point2
+    100056: L_point3
+    100058: L_ring1
+    100060: L_ring2
+    100062: L_ring3
+    100064: L_shoulder
+    100066: L_thumb1
+    100068: L_thumb2
+    100070: L_thumb3
+    100072: L_toes
+    100074: L_wrist
+    100076: mixamo:dagger
+    100078: mixamo:daggercase
+    100080: mixamo:Maul
+    100082: neck
+    100084: R_anke
+    100086: R_arm
+    100088: R_elbow
+    100090: R_foot
+    100092: R_knee
+    100094: R_leg
+    100096: R_middle1
+    100098: R_middle2
+    100100: R_middle3
+    100102: R_pink1
+    100104: R_pink2
+    100106: R_pink3
+    100108: R_point1
+    100110: R_point2
+    100112: R_point3
+    100114: R_ring1
+    100116: R_ring2
+    100118: R_ring3
+    100120: R_shoulder
+    100122: R_thumb1
+    100124: R_thumb2
+    100126: R_thumb3
+    100128: R_toes
+    100130: R_wrist
+    100132: spine
+    100134: tip
+    400000: chest
+    400002: head
+    400004: hips
+    400006: Joint_3
+    400008: Joint_3_2
+    400010: Joint_3_2_2
+    400012: Joint_3_2_3
+    400014: Joint_3_3
+    400016: Joint_3_3_2
+    400018: Joint_3_4
+    400020: Joint_3_4_2
+    400022: Joint_3_5
+    400024: Joint_3_5_2
+    400026: //RootNode
+    400028: L_anke
+    400030: L_arm
+    400032: L_elbow
+    400034: L_foot
+    400036: L_knee
+    400038: L_leg
+    400040: L_middle1
+    400042: L_middle2
+    400044: L_middle3
+    400046: L_pink1
+    400048: L_pink2
+    400050: L_pink3
+    400052: L_point1
+    400054: L_point2
+    400056: L_point3
+    400058: L_ring1
+    400060: L_ring2
+    400062: L_ring3
+    400064: L_shoulder
+    400066: L_thumb1
+    400068: L_thumb2
+    400070: L_thumb3
+    400072: L_toes
+    400074: L_wrist
+    400076: mixamo:dagger
+    400078: mixamo:daggercase
+    400080: mixamo:Maul
+    400082: neck
+    400084: R_anke
+    400086: R_arm
+    400088: R_elbow
+    400090: R_foot
+    400092: R_knee
+    400094: R_leg
+    400096: R_middle1
+    400098: R_middle2
+    400100: R_middle3
+    400102: R_pink1
+    400104: R_pink2
+    400106: R_pink3
+    400108: R_point1
+    400110: R_point2
+    400112: R_point3
+    400114: R_ring1
+    400116: R_ring2
+    400118: R_ring3
+    400120: R_shoulder
+    400122: R_thumb1
+    400124: R_thumb2
+    400126: R_thumb3
+    400128: R_toes
+    400130: R_wrist
+    400132: spine
+    400134: tip
+    2300000: mixamo:dagger
+    2300002: mixamo:daggercase
+    2300004: mixamo:Maul
+    3300000: mixamo:dagger
+    3300002: mixamo:daggercase
+    3300004: mixamo:Maul
+    4300000: mixamo:daggercase
+    4300002: mixamo:dagger
+    4300004: mixamo:Maul
+    7400000: Idle
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: mixamo.com
+      firstFrame: 0
+      lastFrame: 111
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hips
+        weight: 1
+      - path: hips/L_leg
+        weight: 1
+      - path: hips/L_leg/L_knee
+        weight: 1
+      - path: hips/L_leg/L_knee/L_anke
+        weight: 1
+      - path: hips/L_leg/L_knee/L_anke/L_foot
+        weight: 1
+      - path: hips/L_leg/L_knee/L_anke/L_foot/L_toes
+        weight: 1
+      - path: hips/R_leg
+        weight: 1
+      - path: hips/R_leg/R_knee
+        weight: 1
+      - path: hips/R_leg/R_knee/R_anke
+        weight: 1
+      - path: hips/R_leg/R_knee/R_anke/R_foot
+        weight: 1
+      - path: hips/R_leg/R_knee/R_anke/R_foot/R_toes
+        weight: 1
+      - path: hips/spine
+        weight: 1
+      - path: hips/spine/chest
+        weight: 1
+      - path: hips/spine/chest/L_shoulder
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_middle1
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_middle1/L_middle2
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_middle1/L_middle2/L_middle3
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_middle1/L_middle2/L_middle3/Joint_3_4
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_pink1
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_pink1/L_pink2
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_pink1/L_pink2/L_pink3
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_pink1/L_pink2/L_pink3/Joint_3_2
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_point1
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_point1/L_point2
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_point1/L_point2/L_point3
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_point1/L_point2/L_point3/Joint_3_5
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_ring1
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_ring1/L_ring2
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_ring1/L_ring2/L_ring3
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_ring1/L_ring2/L_ring3/Joint_3_3
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_thumb1
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_thumb1/L_thumb2
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_thumb1/L_thumb2/L_thumb3
+        weight: 1
+      - path: hips/spine/chest/L_shoulder/L_arm/L_elbow/L_wrist/L_thumb1/L_thumb2/L_thumb3/Joint_3
+        weight: 1
+      - path: hips/spine/chest/mixamo:Maul
+        weight: 1
+      - path: hips/spine/chest/neck
+        weight: 1
+      - path: hips/spine/chest/neck/head
+        weight: 1
+      - path: hips/spine/chest/neck/head/tip
+        weight: 1
+      - path: hips/spine/chest/R_shoulder
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_middle1
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_middle1/R_middle2
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_middle1/R_middle2/R_middle3
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_middle1/R_middle2/R_middle3/Joint_3_4_2
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_pink1
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_pink1/R_pink2
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_pink1/R_pink2/R_pink3
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_pink1/R_pink2/R_pink3/Joint_3_2_3
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_point1
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_point1/R_point2
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_point1/R_point2/R_point3
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_point1/R_point2/R_point3/Joint_3_5_2
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_ring1
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_ring1/R_ring2
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_ring1/R_ring2/R_ring3
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_ring1/R_ring2/R_ring3/Joint_3_3_2
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_thumb1
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_thumb1/R_thumb2
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_thumb1/R_thumb2/R_thumb3
+        weight: 1
+      - path: hips/spine/chest/R_shoulder/R_arm/R_elbow/R_wrist/R_thumb1/R_thumb2/R_thumb3/Joint_3_2_2
+        weight: 1
+      - path: hips/spine/mixamo:daggercase
+        weight: 1
+      - path: hips/spine/mixamo:daggercase/mixamo:dagger
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

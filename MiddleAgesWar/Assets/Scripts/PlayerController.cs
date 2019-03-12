@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
     bool mIsAttack;                                 // 공격중 판단하는 변수
     int mComboAtkState;                             // 콤보어택 현 상황 판단용 변수
     StickObj mStick;                                // 조이스틱
-    Transform mPlayer = null;                              // 플레이어 위치
+    Transform mPlayer = null;                              // 플레이어 위치?? -> (3.12)이게 왜 필요하지?? 이 오브젝트 위치 자체가 플레이어 위치일텐데?
     Vector3 mToLook;                                // 
     AtkBtnObj mAtkBtn;                              // 공격 버튼
     int a = 0;                                      //

@@ -122,11 +122,14 @@ public class PlayerController : MonoBehaviour {
         if (!mIsAttack)
         {
 
+            // 조이스틱 방향으로 속도
             mRigid.velocity = Quaternion.Euler(0, -(mMainCamera.GetComponent<MainCameraController>().GetmDelta()+90), 0) * toGo * mMoveSpeed * Time.deltaTime;
-            
+
             //mRigid.AddForce(toGo  * mMoveSpeed * Time.deltaTime);
             //mPlayer.Rotate(new Vector3(0,0,1) * mRotSpeed * Time.deltaTime);
             //mPlayer.rotation = Quaternion.LookRotation(mToLook);
+
+            // 조이스틱 방향으로 회전
             mPlayer.rotation = Quaternion.LookRotation(Quaternion.Euler(0, -(mMainCamera.GetComponent<MainCameraController>().GetmDelta()+90), 0) * mToLook);
             
             //mRigid.velocity = Quaternion.Euler(0, 10, 0) * toGo;
@@ -217,6 +220,7 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+    // 공격단계. 플레이어가 공격 중인 상태면 매 프레임 이 함수를 거침.
     void SlashState()
     {
 

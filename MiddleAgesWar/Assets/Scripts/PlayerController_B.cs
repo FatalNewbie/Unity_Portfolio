@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController_B : MonoBehaviour
+{
 
     [SerializeField] float mMoveSpeed;              // 캐릭터 이동속도
     float mRotSpeed;                                // 캐릭터 회전속도
@@ -39,7 +40,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         mPlayerAnimator = GetComponentInChildren<Animator>();
         if (mPlayerAnimator == null)
             Debug.Log("mPlayerAnimator is null");
@@ -61,9 +63,10 @@ public class PlayerController : MonoBehaviour {
 
         exToLook = Vector3.zero;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         if (mIsDead)
             return;
@@ -107,7 +110,7 @@ public class PlayerController : MonoBehaviour {
 
 
 
-            if (toGo != Vector3.zero)
+        if (toGo != Vector3.zero)
         {
             mToLook = toGo;
             exToLook = toGo;
@@ -118,23 +121,23 @@ public class PlayerController : MonoBehaviour {
         }
         toGo.Normalize();
         mToLook.Normalize();
-        
+
         if (!mIsAttack)
         {
 
             // 조이스틱 방향으로 속도
-            mRigid.velocity = Quaternion.Euler(0, -(mMainCamera.GetComponent<MainCameraController>().GetmDelta()+90), 0) * toGo * mMoveSpeed * Time.deltaTime;
+            mRigid.velocity = Quaternion.Euler(0, -(mMainCamera.GetComponent<MainCameraController>().GetmDelta() + 90), 0) * toGo * mMoveSpeed * Time.deltaTime;
 
             //mRigid.AddForce(toGo  * mMoveSpeed * Time.deltaTime);
             //mPlayer.Rotate(new Vector3(0,0,1) * mRotSpeed * Time.deltaTime);
             //mPlayer.rotation = Quaternion.LookRotation(mToLook);
 
             // 조이스틱 방향으로 회전
-            mPlayer.rotation = Quaternion.LookRotation(Quaternion.Euler(0, -(mMainCamera.GetComponent<MainCameraController>().GetmDelta()+90), 0) * mToLook);
-            
+            mPlayer.rotation = Quaternion.LookRotation(Quaternion.Euler(0, -(mMainCamera.GetComponent<MainCameraController>().GetmDelta() + 90), 0) * mToLook);
+
             //mRigid.velocity = Quaternion.Euler(0, 10, 0) * toGo;
 
-            
+
 
         }
 
@@ -182,7 +185,7 @@ public class PlayerController : MonoBehaviour {
             mIsAttack = true;
             SlashState();
             // 공격 버튼이 눌렸으니 velocity를 0로 만들어줌.
-            mRigid.velocity = new Vector3(0,0,0);
+            mRigid.velocity = new Vector3(0, 0, 0);
         }
 
         // 특수 공격
@@ -265,7 +268,7 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    // 공격버튼으로 공격 현재는 이 코드 안씀....
+    // 공격버튼으로 공격
     void Slash_1()
     {
         mPlayerAnimator.SetBool("Attacking", true);
@@ -286,7 +289,7 @@ public class PlayerController : MonoBehaviour {
             mNormalAtkCnt = 0.0f;
             mAtkBtn.IsClickAgain = false;
             mAtkBtn.IsClick = false;
-            
+
         }
     }
 
@@ -398,7 +401,7 @@ public class PlayerController : MonoBehaviour {
     public void GetDamaged(int num)
     {
         mPlayerHp -= num;
-   
+
     }
 
     // 플레이어가 몬스터의 점프공격 범위 안에서 점프공격을 당했을때 호출되는 함수.

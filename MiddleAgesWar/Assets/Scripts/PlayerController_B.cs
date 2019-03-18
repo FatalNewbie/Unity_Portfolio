@@ -51,7 +51,7 @@ public class PlayerController_B : MonoBehaviour
             Debug.Log("InGameFrame is null");
         mStick = go.GetComponent<StickObj>();
 
-        mPlayer = GameObject.Find("PlayerModel").GetComponent<Transform>();
+        mPlayer = GameObject.Find("brute").GetComponent<Transform>();
         if (mPlayer == null)
             Debug.Log("mPlayer is null");
 
@@ -127,7 +127,7 @@ public class PlayerController_B : MonoBehaviour
 
             // 조이스틱 방향으로 속도
             mRigid.velocity = Quaternion.Euler(0, -(mMainCamera.GetComponent<MainCameraController>().GetmDelta() + 90), 0) * toGo * mMoveSpeed * Time.deltaTime;
-
+            
             //mRigid.AddForce(toGo  * mMoveSpeed * Time.deltaTime);
             //mPlayer.Rotate(new Vector3(0,0,1) * mRotSpeed * Time.deltaTime);
             //mPlayer.rotation = Quaternion.LookRotation(mToLook);
@@ -169,14 +169,28 @@ public class PlayerController_B : MonoBehaviour
         //}
 
 
+        // 블렌드 트리 사용 전에 이동관련 애니메이션을 제어했던 부분.
+        //if (toGo == Vector3.zero || mIsAttack)
+        //{
+        //    mPlayerAnimator.SetInteger("State", 0);
+        //}
+        //else
+        //{
+        //    mPlayerAnimator.SetInteger("State", 1);
+        //}
 
-        if (toGo == Vector3.zero || mIsAttack)
+        // 블렌드 트리 사용하여 이동 애니메이션 조정. 서서히 달리고 서서히 멈추는거 굳.
+        if (mRigid.velocity == Vector3.zero)
         {
-            mPlayerAnimator.SetInteger("State", 0);
+            if (mPlayerAnimator.GetFloat("Movement") > 0)
+                mPlayerAnimator.SetFloat("Movement", mPlayerAnimator.GetFloat("Movement") - 1);
         }
         else
         {
-            mPlayerAnimator.SetInteger("State", 1);
+            if (mPlayerAnimator.GetFloat("Movement") < 9)
+            {
+                mPlayerAnimator.SetFloat("Movement", mPlayerAnimator.GetFloat("Movement") + 1);
+            }
         }
 
         // 일반 공격
@@ -237,29 +251,29 @@ public class PlayerController_B : MonoBehaviour
          2 : 2번째 콤보공격을 하는중.
          3 : 3번째 콤보공격을 하는중.
          */
-        int nowSlashState = mPlayerAnimator.GetInteger("Attack");
+        float nowSlashState = mPlayerAnimator.GetFloat("Combo_State");
 
 
         if (nowSlashState == 0)
         {
-            mPlayerAnimator.SetInteger("Attack", ++nowSlashState);
+            mPlayerAnimator.SetFloat("Combo_State", ++nowSlashState);
             mAtkBtn.IsClick = false;
         }
         else if (nowSlashState == 1 && mAtkBtn.IsClick == true)
         {
-            mPlayerAnimator.SetInteger("Attack", ++nowSlashState);
+            mPlayerAnimator.SetFloat("Combo_State", ++nowSlashState);
             mAtkBtn.IsClick = false;
         }
         else if (nowSlashState == 2 && mAtkBtn.IsClick == true)
         {
-            mPlayerAnimator.SetInteger("Attack", ++nowSlashState);
+            mPlayerAnimator.SetFloat("Combo_State", ++nowSlashState);
             mAtkBtn.IsClick = false;
         }
         else
         {
             mIsAttack = false;
             mPlayerAnimator.SetBool("Attacking", false);
-            mPlayerAnimator.SetInteger("Attack", 0);
+            mPlayerAnimator.SetFloat("Combo_State", 0);
             mAtkBtn.IsClick = false;
         }
 

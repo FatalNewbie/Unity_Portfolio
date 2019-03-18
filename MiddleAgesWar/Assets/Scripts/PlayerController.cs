@@ -124,7 +124,6 @@ public class PlayerController : MonoBehaviour {
 
             // 조이스틱 방향으로 속도
             mRigid.velocity = Quaternion.Euler(0, -(mMainCamera.GetComponent<MainCameraController>().GetmDelta()+90), 0) * toGo * mMoveSpeed * Time.deltaTime;
-
             //mRigid.AddForce(toGo  * mMoveSpeed * Time.deltaTime);
             //mPlayer.Rotate(new Vector3(0,0,1) * mRotSpeed * Time.deltaTime);
             //mPlayer.rotation = Quaternion.LookRotation(mToLook);

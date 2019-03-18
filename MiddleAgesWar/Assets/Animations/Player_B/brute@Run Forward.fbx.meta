@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 38a3ccd31addb7f43836375c2d73ad72
-timeCreated: 1552723251
+guid: 1376e81ba23fcf64da49c8d22c5160dd
+timeCreated: 1552906198
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -141,7 +141,7 @@ ModelImporter:
     400130: Spine
     400132: Spine1
     400134: Spine2
-    7400000: Attack Combo 2
+    7400000: Run Forward
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -167,10 +167,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Attack Combo 2
+      name: Run Forward
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 51
+      lastFrame: 18
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -189,15 +189,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 1
-        functionName: SlashEnd
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: ce80e9de8c6a5fc4e9b371045b71e5d5,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask:
       - path: 
         weight: 1

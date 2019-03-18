@@ -25,7 +25,7 @@ public class HitCtrl : MonoBehaviour {
         // 플레이어가 공격할때 공격당하는 것들은 전부 여기에. 밑에도 마찬가지.
         // gameObject가 공격하는 오브젝트, other이 공격당하는 오브젝트.
         //Debug.Log(other.tag);
-        if (gameObject.tag == "PlayerSword")
+        if (gameObject.tag == "PlayerWeapon")
         {
             if (other.tag == "Enemy")
             {

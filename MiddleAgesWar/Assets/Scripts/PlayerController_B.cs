@@ -34,7 +34,7 @@ public class PlayerController_B : MonoBehaviour
         mPowerAtkCnt = 0.0f;
         mIsAttack = false;
         mComboAtkState = 1;
-        mToLook = new Vector3(0, 0, 0);
+        mToLook = Vector3.zero;
         mAtkBtn = GameObject.Find("AtkBtn").GetComponent<AtkBtnObj>();
         mIsFall = false;
     }
@@ -70,6 +70,8 @@ public class PlayerController_B : MonoBehaviour
 
         if (mIsDead)
             return;
+
+        Debug.Log(mPlayerHp);
 
         if (mPlayerHp <= 0.0f)
         {

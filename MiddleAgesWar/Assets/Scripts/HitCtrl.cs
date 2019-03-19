@@ -29,7 +29,7 @@ public class HitCtrl : MonoBehaviour {
         {
             if (other.tag == "Enemy")
             {
-                other.GetComponentInParent<Enemy1Controller>().GetDamaged(gameObject.GetComponentInParent<PlayerController>().GetAttackDamage());
+                other.GetComponentInParent<Enemy1Controller>().GetDamaged(gameObject.GetComponentInParent<PlayerController_B>().GetAttackDamage());
             }
 
             if (other.tag == "MainGateLever")
@@ -39,31 +39,31 @@ public class HitCtrl : MonoBehaviour {
 
             if (other.tag == "Boss")
             {
-                other.GetComponentInParent<BossController>().GetDamaged(gameObject.GetComponentInParent<PlayerController>().GetAttackDamage());
+                other.GetComponentInParent<BossController>().GetDamaged(gameObject.GetComponentInParent<PlayerController_B>().GetAttackDamage());
             }
 
         }
 
         else if (gameObject.tag == "Boss")
         {
-            if (other.tag == "PlayerObj")
+            if (other.tag == "PlayerObj_B")
             {
                 if (mBossNormalAttack)
-                    other.GetComponent<PlayerController>().GetDamaged(gameObject.GetComponentInParent<BossController>().GetAttackDamage("normal"));
+                    other.GetComponent<PlayerController_B>().GetDamaged(gameObject.GetComponentInParent<BossController>().GetAttackDamage("normal"));
                 else if (mBossSlashAttack)
-                    other.GetComponent<PlayerController>().GetDamaged(gameObject.GetComponentInParent<BossController>().GetAttackDamage("slash"));
+                    other.GetComponent<PlayerController_B>().GetDamaged(gameObject.GetComponentInParent<BossController>().GetAttackDamage("slash"));
                 else
                 {
-                    other.GetComponent<PlayerController>().GetDamaged(gameObject.GetComponentInParent<BossController>().GetAttackDamage("jump"));
-                    other.GetComponent<PlayerController>().PlayerFall();
+                    other.GetComponent<PlayerController_B>().GetDamaged(gameObject.GetComponentInParent<BossController>().GetAttackDamage("jump"));
+                    other.GetComponent<PlayerController_B>().PlayerFall();
                 }
             }
         }
 
         else if (gameObject.tag == "Enemy")
         {
-            if (other.tag == "PlayerObj")
-                other.GetComponent<PlayerController>().GetDamaged(gameObject.GetComponentInParent<Enemy1Controller>().GetAttackDamage());
+            if (other.tag == "PlayerObj_B")
+                other.GetComponent<PlayerController_B>().GetDamaged(gameObject.GetComponentInParent<Enemy1Controller>().GetAttackDamage());
         }
 
        

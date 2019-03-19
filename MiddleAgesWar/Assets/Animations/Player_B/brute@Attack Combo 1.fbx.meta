@@ -198,6 +198,22 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.35119045
+        functionName: HitOn
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 59ab677980e95954ca06411343f46752,
+          type: 3}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.49702382
+        functionName: HitOff
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 59ab677980e95954ca06411343f46752,
+          type: 3}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

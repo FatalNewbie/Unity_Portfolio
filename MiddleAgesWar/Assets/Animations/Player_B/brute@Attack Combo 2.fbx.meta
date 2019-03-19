@@ -156,7 +156,8 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: Event SlashEnd has a time (1.700000) outside the clip's
+      valid range (0.000000..1.666667). It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 1
@@ -197,6 +198,22 @@ ModelImporter:
           type: 3}
         floatParameter: 0
         intParameter: 0
+        messageOptions: 0
+      - time: 0.35416666
+        functionName: HitOn
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 59ab677980e95954ca06411343f46752,
+          type: 3}
+        floatParameter: 0
+        intParameter: 2
+        messageOptions: 0
+      - time: 0.47619048
+        functionName: HitOff
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 59ab677980e95954ca06411343f46752,
+          type: 3}
+        floatParameter: 0
+        intParameter: 2
         messageOptions: 0
       transformMask:
       - path: 

@@ -62,7 +62,7 @@ public class BossController : MonoBehaviour
     {
         mNavMeshAg = gameObject.GetComponentInChildren<NavMeshAgent>();
         mAnimator = gameObject.GetComponentInChildren<Animator>();
-        mPlayer = GameObject.Find("PlayerObj").transform;
+        mPlayer = GameObject.Find("PlayerObj_B").transform;
         mBoss = GameObject.Find("BossModel").transform; 
         mBossState = BossState.IDLE;
         IsAttacking = false;

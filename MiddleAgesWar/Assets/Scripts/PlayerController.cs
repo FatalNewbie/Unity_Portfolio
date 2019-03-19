@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
     bool mIsAttack;                                 // 공격중 판단하는 변수
     int mComboAtkState;                             // 콤보어택 현 상황 판단용 변수
     StickObj mStick;                                // 조이스틱
-    Transform mPlayer = null;                              // 플레이어 위치
+    Transform mPlayer = null;                              // 플레이어 위치?? -> (3.12)이게 왜 필요하지?? 이 오브젝트 위치 자체가 플레이어 위치일텐데?
     Vector3 mToLook;                                // 
     AtkBtnObj mAtkBtn;                              // 공격 버튼
     int a = 0;                                      //
@@ -122,11 +122,13 @@ public class PlayerController : MonoBehaviour {
         if (!mIsAttack)
         {
 
+            // 조이스틱 방향으로 속도
             mRigid.velocity = Quaternion.Euler(0, -(mMainCamera.GetComponent<MainCameraController>().GetmDelta()+90), 0) * toGo * mMoveSpeed * Time.deltaTime;
-            
             //mRigid.AddForce(toGo  * mMoveSpeed * Time.deltaTime);
             //mPlayer.Rotate(new Vector3(0,0,1) * mRotSpeed * Time.deltaTime);
             //mPlayer.rotation = Quaternion.LookRotation(mToLook);
+
+            // 조이스틱 방향으로 회전
             mPlayer.rotation = Quaternion.LookRotation(Quaternion.Euler(0, -(mMainCamera.GetComponent<MainCameraController>().GetmDelta()+90), 0) * mToLook);
             
             //mRigid.velocity = Quaternion.Euler(0, 10, 0) * toGo;
@@ -217,6 +219,7 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+    // 공격단계. 플레이어가 공격 중인 상태면 매 프레임 이 함수를 거침.
     void SlashState()
     {
 
@@ -261,7 +264,7 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    // 공격버튼으로 공격
+    // 공격버튼으로 공격 현재는 이 코드 안씀....
     void Slash_1()
     {
         mPlayerAnimator.SetBool("Attacking", true);

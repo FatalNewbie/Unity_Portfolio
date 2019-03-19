@@ -11,7 +11,7 @@ public class Enemy1HpBarMng : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         mCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        mPlayer = GameObject.Find("PlayerObj");
+        mPlayer = GameObject.Find("PlayerObj_B");
         
 	}
 	    
@@ -19,9 +19,8 @@ public class Enemy1HpBarMng : MonoBehaviour {
 	void Update () {
         mDirection = mCamera.transform.position - mPlayer.transform.position;
         //transform.rotation = Quaternion.LookRotation(gameObject.transform.position - mCamera.transform.position);
-        Debug.Log(mDirection);
         //gameObject.transform.LookAt(mDirection);
-        transform.rotation = Quaternion.LookRotation(mDirection);
+        transform.rotation = Quaternion.LookRotation(-mDirection);
             
     }
 }

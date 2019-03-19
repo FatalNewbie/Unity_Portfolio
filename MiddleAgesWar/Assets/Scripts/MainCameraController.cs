@@ -48,7 +48,9 @@ public class MainCameraController : MonoBehaviour {
 
         mNowStatus = SceneStatus.LOBBY;
 
-        mPlayer = GameObject.FindGameObjectWithTag("PlayerObj");
+        mPlayer = GameObject.FindGameObjectWithTag("PlayerObj_B");
+        if (mPlayer == null)
+            Debug.Log("mPlyaer in MainCameraController is null");
     }
 	
 	// Update is called once per frame

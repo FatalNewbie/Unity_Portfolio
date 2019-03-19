@@ -37,7 +37,7 @@ public class Enemy1Controller : MonoBehaviour {
 	void Start () {
         mNavMeshAgent = gameObject.GetComponent<NavMeshAgent>();
         mAnimator = gameObject.GetComponentInChildren<Animator>();
-        mPlayer = GameObject.Find("PlayerObj").transform;
+        mPlayer = GameObject.Find("PlayerObj_B").transform;
 
         // 플래그 변수와 몬스터 상태 초기화.
         mIsDead = false;

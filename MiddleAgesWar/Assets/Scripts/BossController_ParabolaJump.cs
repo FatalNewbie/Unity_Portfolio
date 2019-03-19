@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BossController : MonoBehaviour
+public class BossController_ParabolaJump : MonoBehaviour
 {
 
     /*
@@ -36,7 +36,7 @@ public class BossController : MonoBehaviour
     BossState mBossState;
     bool IsAttacking;                   // 공격중을 나타내는 변수.
     bool IsDeath;                       // 생사여부 부울변수.
-    
+
     Vector3 mJumpAttackPoint;           // 점프공격시 점프로 날아갈 위치.
     GameObject mJumpAttackRange;
     Rigidbody mRgb;
@@ -56,14 +56,14 @@ public class BossController : MonoBehaviour
         JUMPATTACKREADY,    // 점프어택 준비
         JUMPATTACK          // 점프어택
     }
-    
+
     // Use this for initialization
     void Start()
     {
         mNavMeshAg = gameObject.GetComponentInChildren<NavMeshAgent>();
         mAnimator = gameObject.GetComponentInChildren<Animator>();
         mPlayer = GameObject.Find("PlayerObj_B").transform;
-        mBoss = GameObject.Find("BossModel").transform; 
+        mBoss = GameObject.Find("BossModel").transform;
         mBossState = BossState.IDLE;
         IsAttacking = false;
         IsDeath = false;
@@ -79,24 +79,24 @@ public class BossController : MonoBehaviour
         mRgb = gameObject.GetComponentInChildren<Rigidbody>();
         mAngle = 0.0f;
         mJumpAttackEnd = false;
-        
-        
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if(IsDeath)
+        if (IsDeath)
             return;
 
         if (mBossHp <= 0)
         {
             IsDeath = true;
-            mAnimator.SetBool("IsDeath",true);
+            mAnimator.SetBool("IsDeath", true);
         }
 
-        
+
 
         // 쿨타임 증가
         mNormalAttackCoolingCnt += Time.deltaTime;
@@ -156,7 +156,7 @@ public class BossController : MonoBehaviour
                 }
                 break;
         }
-        
+
 
     }
 
@@ -290,15 +290,15 @@ public class BossController : MonoBehaviour
 
         //점프 시작이므로 늦춰놓았던 애니메이션 속도를 다시 정상으로.
         mAnimator.speed = 1.0f;
-        
-        
+
+
 
     }
 
 
     void JumpAttack()
     {
-        
+
 
         if (mBoss.position.y > 0.0f)
         {
@@ -311,7 +311,7 @@ public class BossController : MonoBehaviour
             // 체공중에 늦춰놓았던 스피드를 다시 정상으로 돌림.
             mAnimator.speed = 1.0f;
 
-           
+
 
 
             StartCoroutine(JumpAttackEnd());
@@ -329,7 +329,7 @@ public class BossController : MonoBehaviour
 
         // 점프어택 완료를 애니메이터에게 알려줌.
         mAnimator.SetBool("IsJumpAttack", false);
-        
+
         // 바닥에 빨간색 표시 제거.
         mJumpAttackRange.GetComponent<MeshRenderer>().enabled = false;
 

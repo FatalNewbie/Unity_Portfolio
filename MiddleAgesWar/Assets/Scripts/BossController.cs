@@ -68,7 +68,7 @@ public class BossController : MonoBehaviour
         IsAttacking = false;
         IsDeath = false;
         //////////////////////////////////////////////////////////////////
-        // 시작시 쿨타임 조정용
+        // 시작시 쿨링카운트 조정용
         mNormalAttackCoolingCnt = 0.0f;
         mSlashCoolingCnt = 0.0f;
         mJumpAttackCoolingCnt = 0.0f;
@@ -98,72 +98,28 @@ public class BossController : MonoBehaviour
 
         
 
-        // 쿨타임 증가
+        // 쿨링카운트 증가
         mNormalAttackCoolingCnt += Time.deltaTime;
         mSlashCoolingCnt += Time.deltaTime;
         mJumpAttackCoolingCnt += Time.deltaTime;
 
-        //상황을 판별해 mBossState 변경.
-        ChangeState();
+        //상황을 판별해 적절한 mBossState 부여.
+        StateDetermination();
 
         //mBossState = BossState.IDLE;
 
-        switch (mBossState)
-        {
-            case BossState.IDLE:
-
-                mNavMeshAg.enabled = false;
-
-                mAnimator.SetInteger("State", 0);
-
-                break;
-            case BossState.TRACING:
-                mNavMeshAg.enabled = true;
-                mAnimator.SetInteger("State", 1);
-                mNavMeshAg.SetDestination(mPlayer.position);
-                mNormalAttackCoolingCnt = mNormalAttackCoolTime;
-                break;
-            case BossState.PUNCH:
-                IsAttacking = true;
-                mNavMeshAg.enabled = false;
-                mAnimator.SetBool("IsPunch", true);
-                break;
-            case BossState.SLASH:
-
-                IsAttacking = true;
-                mNavMeshAg.enabled = false;
-                mAnimator.SetBool("IsSlash", true);
-
-                break;
-            case BossState.ROAR:
-                IsAttacking = true;
-                mNavMeshAg.enabled = false;
-                break;
-            case BossState.JUMPATTACKREADY:
-                if (!IsAttacking)
-                    StartCoroutine(JumpReady());
-                mJumpAttackEnd = false;
-                IsAttacking = true;
-                mNavMeshAg.enabled = false;
-                mAnimator.SetBool("IsJumpAttack", true);
-                break;
-            case BossState.JUMPATTACK:
-
-                if (!mJumpAttackEnd)
-                {
-                    //점프어택 메소드
-                    JumpAttack();
-                }
-                break;
-        }
+        // mBossState에 맞는 행동 취함.
+        BossAction();
+        
         
 
     }
 
 
     // 매 프레임마다 몬스터의 State를 결정해주는 함수.
-    void ChangeState()
+    void StateDetermination()
     {
+
         // 점프 공격 체크
         if (!(IsAttacking) && // 공격중이 아닐때
             (mJumpAttackCoolingCnt >= mJumpAttackCoolTime)
@@ -205,6 +161,58 @@ public class BossController : MonoBehaviour
         }
     }
 
+    void BossAction()
+    {
+        switch (mBossState)
+        {
+            case BossState.IDLE:
+
+                mNavMeshAg.enabled = false;
+
+                mAnimator.SetInteger("State", 0);
+
+                break;
+            case BossState.TRACING:
+                mNavMeshAg.enabled = true;
+                mAnimator.SetInteger("State", 1);
+                mNavMeshAg.SetDestination(mPlayer.position);
+                //mNormalAttackCoolingCnt = mNormalAttackCoolTime;
+                break;
+            case BossState.PUNCH:
+                IsAttacking = true;
+                mNavMeshAg.enabled = false;
+                mAnimator.SetBool("IsPunch", true);
+                break;
+            case BossState.SLASH:
+
+                IsAttacking = true;
+                mNavMeshAg.enabled = false;
+                mAnimator.SetBool("IsSlash", true);
+
+                break;
+            case BossState.ROAR:
+                IsAttacking = true;
+                mNavMeshAg.enabled = false;
+                break;
+            case BossState.JUMPATTACKREADY:
+                if (!IsAttacking)
+                    StartCoroutine(JumpReady());
+                mJumpAttackEnd = false;
+                IsAttacking = true;
+                mNavMeshAg.enabled = false;
+                mAnimator.SetBool("IsJumpAttack", true);
+                break;
+            case BossState.JUMPATTACK:
+
+                if (!mJumpAttackEnd)
+                {
+                    //점프어택 메소드
+                    JumpAttack();
+                }
+                break;
+        }
+    }
+
     //스킬이 끝난 후 호출 되는 함수.
     void SkillEnd(int attackType)
     {
@@ -240,7 +248,7 @@ public class BossController : MonoBehaviour
 
 
 
-        ChangeState();
+        StateDetermination ();
     }
 
     // 캐스팅 시작.

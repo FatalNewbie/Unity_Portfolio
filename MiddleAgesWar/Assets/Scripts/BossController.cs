@@ -109,7 +109,7 @@ public class BossController : MonoBehaviour
         //mBossState = BossState.IDLE;
 
         // mBossState에 맞는 행동 취함.
-        //BossAction();
+       BossAction();
         
         
 
@@ -121,17 +121,25 @@ public class BossController : MonoBehaviour
     {
 
         // 공격 중 아닐 때 플레이어 방향 바라보기
-        // if (!IsAttacking)
-        Quaternion q = Quaternion.identity;
-        q.SetLookRotation(mPlayer.position);
-        mBoss.rotation = q;
-
-      
-
-            //transform.rotation.SetLookRotation(Vector3.Lerp(mBoss.transform.localEulerAngles,mBoss.transform.position - mPlayer.transform.position, 0.9f));
+        if (!IsAttacking)
+        {
+            Vector3 bossLookLerp = Vector3.Lerp(Quaternion.ToEulerAngles(mBoss.rotation), mPlayer.position - mBoss.position, 0.1f);
+            Quaternion q = Quaternion.LookRotation(mPlayer.position - transform.position);
+            mBoss.rotation = q;
+        }
 
 
-            // 점프 공격 체크
+
+        //mBoss.LookAt(mPlayer);
+
+
+
+
+
+        //transform.rotation.SetLookRotation(Vector3.Lerp(mBoss.transform.localEulerAngles,mBoss.transform.position - mPlayer.transform.position, 0.9f));
+
+
+        // 점프 공격 체크
         if (!(IsAttacking) && // 공격중이 아닐때
             (mJumpAttackCoolingCnt >= mJumpAttackCoolTime)
             )

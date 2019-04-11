@@ -13,12 +13,11 @@ public class LookRotation_Test : MonoBehaviour {
 	
 	// Update is called once per framea
 	void Update () {
-        //gameObject.transform.LookAt(mPlayer.transform);
-        //Vector3 toLook = Vector3.Lerp(transform.position, mPlayer.transform.position - transform.position, 0.5f);
 
-        //Quaternion q = Quaternion.identity;
-        //q.SetLookRotation(toLook);
-        //transform.rotation = q;
+        Quaternion targetRot = Quaternion.identity;
+        targetRot.SetLookRotation(mPlayer.transform.position - transform.position);
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, 0.01f);
 
   
 

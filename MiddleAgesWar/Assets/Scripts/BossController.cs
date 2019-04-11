@@ -30,8 +30,8 @@ public class BossController : MonoBehaviour
     [SerializeField] int mBossHp;
 
     NavMeshAgent mNavMeshAg;
-    Transform mPlayer;
-    Transform mBoss;
+    GameObject mPlayer;
+    GameObject mBoss;
     Animator mAnimator;
     BossState mBossState;
     bool IsAttacking;                   // 공격중을 나타내는 변수.
@@ -62,8 +62,8 @@ public class BossController : MonoBehaviour
     {
         mNavMeshAg = gameObject.GetComponentInChildren<NavMeshAgent>();
         mAnimator = gameObject.GetComponentInChildren<Animator>();
-        mPlayer = GameObject.Find("PlayerObj_B").transform;
-        mBoss = GameObject.Find("BossObj").transform; 
+        mPlayer = GameObject.Find("PlayerObj_B");
+        mBoss = GameObject.Find("BossObj");
         mBossState = BossState.IDLE;
         IsAttacking = false;
         IsDeath = false;
@@ -123,9 +123,9 @@ public class BossController : MonoBehaviour
         // 공격 중 아닐 때 플레이어 방향 바라보기
         if (!IsAttacking)
         {
-            Vector3 bossLookLerp = Vector3.Lerp(Quaternion.ToEulerAngles(mBoss.rotation), mPlayer.position - mBoss.position, 0.1f);
-            Quaternion q = Quaternion.LookRotation(mPlayer.position - transform.position);
-            mBoss.rotation = q;
+            Quaternion targetRot = Quaternion.identity;
+            targetRot.SetLookRotation(mPlayer.transform.position - mBoss.transform.position);
+            mBoss.transform.rotation = Quaternion.Lerp(mBoss.transform.rotation, targetRot, 0.08f);
         }
 
 
@@ -148,7 +148,7 @@ public class BossController : MonoBehaviour
         }
 
         // 추적 체크
-        else if (Vector3.Distance(mBoss.position, mPlayer.position) >= mNavMeshAg.stoppingDistance && // 나브메쉬 정지거리보다 멀때 &&
+        else if (Vector3.Distance(mBoss.transform.position, mPlayer.transform.position) >= mNavMeshAg.stoppingDistance && // 나브메쉬 정지거리보다 멀때 &&
             !(IsAttacking) // 공격중이 아닐때
             )
         {
@@ -156,7 +156,7 @@ public class BossController : MonoBehaviour
         }
 
         // 슬래쉬 공격 체크
-        else if (Vector3.Distance(mBoss.position, mPlayer.position) <= mNavMeshAg.stoppingDistance && // 나브메쉬 정지거리보다 가까울때 &&
+        else if (Vector3.Distance(mBoss.transform.position, mPlayer.transform.position) <= mNavMeshAg.stoppingDistance && // 나브메쉬 정지거리보다 가까울때 &&
             (mSlashCoolingCnt >= mSlashCoolTime) && // 현재 쿨타임이 정해진 쿨타임을 충족했을 때  &&
             !(IsAttacking) // 공격중이 아닐때
             )
@@ -165,7 +165,7 @@ public class BossController : MonoBehaviour
         }
 
         // 일반공격 체크
-        else if (Vector3.Distance(mBoss.position, mPlayer.position) <= mNavMeshAg.stoppingDistance && // 나브메쉬 정지거리보다 가까울때 &&
+        else if (Vector3.Distance(mBoss.transform.position, mPlayer.transform.position) <= mNavMeshAg.stoppingDistance && // 나브메쉬 정지거리보다 가까울때 &&
             (mNormalAttackCoolingCnt >= mNormalAttackCoolTime) && // 현재 쿨타임이 정해진 쿨타임을 충족했을 때 &&
             !(IsAttacking) // 공격중이 아닐때
             )
@@ -194,7 +194,7 @@ public class BossController : MonoBehaviour
             case BossState.TRACING:
                 mNavMeshAg.enabled = true;
                 mAnimator.SetInteger("State", 1);
-                mNavMeshAg.SetDestination(mPlayer.position);
+                mNavMeshAg.SetDestination(mPlayer.transform.position);
                 //mNormalAttackCoolingCnt = mNormalAttackCoolTime;
                 break;
             case BossState.PUNCH:
@@ -289,7 +289,7 @@ public class BossController : MonoBehaviour
 
         if (attackType == 5)
         {
-            mJumpAttackPoint = mPlayer.position;
+            mJumpAttackPoint = mPlayer.transform.position;
             //JumpAttackCalculate();
 
         }
@@ -304,12 +304,12 @@ public class BossController : MonoBehaviour
         mBossState = BossState.JUMPATTACK;
 
         // 점프할 위치를 가리키는 벡터에 플레이어의 포지션을 가져옴.
-        mJumpAttackPoint = mPlayer.position;
+        mJumpAttackPoint = mPlayer.transform.position;
         // 점프할 위치를 바라봄.
-        mBoss.rotation = Quaternion.LookRotation(mJumpAttackPoint - mBoss.position);
+        mBoss.transform.rotation = Quaternion.LookRotation(mJumpAttackPoint - mBoss.transform.position);
         // 필요한 벡터 계산.
-        mvJumpMid = (mBoss.position + mPlayer.position) / 2f;
-        mvJumpCos = mBoss.position - mvJumpMid;
+        mvJumpMid = (mBoss.transform.position + mPlayer.transform.position) / 2f;
+        mvJumpCos = mBoss.transform.position - mvJumpMid;
 
         //점프 공격 범위를 옮김.
         mJumpAttackRange.transform.position = mJumpAttackPoint;
@@ -327,9 +327,9 @@ public class BossController : MonoBehaviour
     {
         
 
-        if (mBoss.position.y > 0.0f)
+        if (mBoss.transform.position.y > 0.0f)
         {
-            mBoss.position = mvJumpCos * Mathf.Cos(mAngle) + mJumpAttackHeight * Vector3.up * Mathf.Sin(mAngle) + mvJumpMid;
+            mBoss.transform.position = mvJumpCos * Mathf.Cos(mAngle) + mJumpAttackHeight * Vector3.up * Mathf.Sin(mAngle) + mvJumpMid;
             mAngle += mJumpAttackSpeed * Time.deltaTime;
         }
         else

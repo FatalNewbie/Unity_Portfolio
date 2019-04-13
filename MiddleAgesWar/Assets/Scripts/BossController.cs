@@ -128,17 +128,6 @@ public class BossController : MonoBehaviour
             mBoss.transform.rotation = Quaternion.Lerp(mBoss.transform.rotation, targetRot, 0.08f);
         }
 
-
-
-        //mBoss.LookAt(mPlayer);
-
-
-
-
-
-        //transform.rotation.SetLookRotation(Vector3.Lerp(mBoss.transform.localEulerAngles,mBoss.transform.position - mPlayer.transform.position, 0.9f));
-
-
         // 점프 공격 체크
         if (!(IsAttacking) && // 공격중이 아닐때
             (mJumpAttackCoolingCnt >= mJumpAttackCoolTime)

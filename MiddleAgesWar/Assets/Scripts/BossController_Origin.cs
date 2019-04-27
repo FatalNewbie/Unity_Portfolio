@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BossController_ParabolaJump : MonoBehaviour
+public class BossController_Origin : MonoBehaviour
 {
 
     /*

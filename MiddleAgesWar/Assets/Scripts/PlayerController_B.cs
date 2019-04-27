@@ -71,7 +71,7 @@ public class PlayerController_B : MonoBehaviour
         if (mIsDead)
             return;
 
-        Debug.Log(mPlayerHp);
+
 
         if (mPlayerHp <= 0.0f)
         {

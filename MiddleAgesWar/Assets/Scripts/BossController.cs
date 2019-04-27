@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class BossController : MonoBehaviour
 {
 
@@ -41,9 +42,7 @@ public class BossController : MonoBehaviour
     GameObject mJumpAttackRange;
     Rigidbody mRgb;
 
-    Vector3 mvJumpMid;                   // 점프공격에 필요한 벡터. 보스의 위치와 점프로 날아갈 위치의 중간을 나타냄.
-    Vector3 mvJumpCos;                   // 점프공격에 필요한 벡터. x좌표를 계산하는데 필요한 벡터로 Cos계산에 필요함. 보스의 위치와 점프로 날아갈 위치의 중간에서 보스의 위치와 점프로 날아갈 위치를 번갈아가며 가르킴.
-    float mAngle;                         // 점프공격 Cos에 들어갈 각.
+    bool mIsJumping;                      // 점프공격 과정 중에서 지금 점프를 하여 공중에 있는 상태에 대한 부울변수.
     bool mJumpAttackEnd;                  // 점프공격이 끝났는지 판별하는 변수.
 
     enum BossState
@@ -67,6 +66,7 @@ public class BossController : MonoBehaviour
         mBossState = BossState.IDLE;
         IsAttacking = false;
         IsDeath = false;
+        mIsJumping = false;
         //////////////////////////////////////////////////////////////////
         // 시작시 쿨링카운트 조정용
         mNormalAttackCoolingCnt = 0.0f;
@@ -77,7 +77,6 @@ public class BossController : MonoBehaviour
         mJumpAttackPoint = new Vector3(0, 0, 0);
         mJumpAttackRange = GameObject.Find("MonsterJumpAttackRange");
         mRgb = gameObject.GetComponentInChildren<Rigidbody>();
-        mAngle = 0.0f;
         mJumpAttackEnd = false;
         
         
@@ -86,6 +85,8 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+
 
         if(IsDeath)
             return;
@@ -296,9 +297,7 @@ public class BossController : MonoBehaviour
         mJumpAttackPoint = mPlayer.transform.position;
         // 점프할 위치를 바라봄.
         mBoss.transform.rotation = Quaternion.LookRotation(mJumpAttackPoint - mBoss.transform.position);
-        // 필요한 벡터 계산.
-        mvJumpMid = (mBoss.transform.position + mPlayer.transform.position) / 2f;
-        mvJumpCos = mBoss.transform.position - mvJumpMid;
+
 
         //점프 공격 범위를 옮김.
         mJumpAttackRange.transform.position = mJumpAttackPoint;
@@ -306,32 +305,48 @@ public class BossController : MonoBehaviour
 
         //점프 시작이므로 늦춰놓았던 애니메이션 속도를 다시 정상으로.
         mAnimator.speed = 1.0f;
-        
-        
 
     }
 
 
     void JumpAttack()
     {
-        
 
-        if (mBoss.transform.position.y > 0.0f)
+        if (mRgb.velocity.x == 0 && mRgb.velocity.z == 0)
         {
-            mBoss.transform.position = mvJumpCos * Mathf.Cos(mAngle) + mJumpAttackHeight * Vector3.up * Mathf.Sin(mAngle) + mvJumpMid;
-            mAngle += mJumpAttackSpeed * Time.deltaTime;
+            if (!mIsJumping)
+            {
+                float deltaX = mPlayer.transform.position.x - mBoss.transform.position.x;
+                float deltaZ = mPlayer.transform.position.z - mBoss.transform.position.z;
+
+                float targetX = deltaX / 4.87f;
+                float targetZ = deltaZ / 4.87f;
+
+                mRgb.velocity = new Vector3(targetX, 24, targetZ);
+
+                mIsJumping = true;
+            }
+
+            else
+            {
+                mJumpAttackEnd = true;
+                // 체공중에 늦춰놓았던 스피드를 다시 정상으로 돌림.
+                mAnimator.speed = 1.0f;
+
+
+                StartCoroutine(JumpAttackEnd());
+
+                mIsJumping = false;
+            }
+
         }
-        else
-        {
-            mJumpAttackEnd = true;
-            // 체공중에 늦춰놓았던 스피드를 다시 정상으로 돌림.
-            mAnimator.speed = 1.0f;
-
-           
 
 
-            StartCoroutine(JumpAttackEnd());
-        }
+
+        //mBoss.transform.position = mvJumpCos * Mathf.Cos(mAngle) + mJumpAttackHeight * Vector3.up * Mathf.Sin(mAngle) + mvJumpMid;
+        //mAngle += mJumpAttackSpeed * Time.deltaTime;
+
+      
 
     }
 
@@ -356,8 +371,7 @@ public class BossController : MonoBehaviour
         // 완전 끝나고 늦춰진 속도를 다시 전환.
         mAnimator.speed = 1.0f;
 
-        // angle을 0으로.
-        mAngle = 0;
+
     }
 
     public int GetAttackDamage(string type)

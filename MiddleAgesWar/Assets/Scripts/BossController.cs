@@ -85,8 +85,8 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
 
+        Debug.Log(mBoss.GetComponentInChildren<Animator>().GetBool("IsJumpAttack"));
 
         if(IsDeath)
             return;
@@ -312,8 +312,12 @@ public class BossController : MonoBehaviour
     void JumpAttack()
     {
 
-        if (mRgb.velocity.x == 0 && mRgb.velocity.z == 0)
+       
+
+      
+        if (Mathf.Abs(Vector3.Magnitude(mRgb.velocity)) < 1 && transform.position.y < 10)
         {
+            
             if (!mIsJumping)
             {
                 float deltaX = mPlayer.transform.position.x - mBoss.transform.position.x;
@@ -333,6 +337,7 @@ public class BossController : MonoBehaviour
                 // 체공중에 늦춰놓았던 스피드를 다시 정상으로 돌림.
                 mAnimator.speed = 1.0f;
 
+                
 
                 StartCoroutine(JumpAttackEnd());
 
@@ -353,7 +358,11 @@ public class BossController : MonoBehaviour
     // 땅에 착지 후에 잠깐 대기 시간을 갖기 위해 코루틴 돌릶.
     IEnumerator JumpAttackEnd()
     {
+        Debug.Log("쩜프 공격 끝들어왔고!");
+
         yield return new WaitForSeconds(2.0f);
+
+        Debug.Log("2초 기다리는거 끝");
 
         // 다시 공격 루틴을 돌리기 위해서 공격중을 false로 전환.
         IsAttacking = false;

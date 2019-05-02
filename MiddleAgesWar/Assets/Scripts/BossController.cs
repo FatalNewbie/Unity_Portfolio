@@ -19,8 +19,8 @@ public class BossController : MonoBehaviour
     float mJumpAttackCoolingCnt;
 
     // 점프공격의 점프 높이와 점프 속도.
-    [SerializeField] float mJumpAttackHeight;
-    [SerializeField] float mJumpAttackSpeed;
+    //[SerializeField] float mJumpAttackHeight;
+    //[SerializeField] float mJumpAttackSpeed;
 
     // 각 공격 데미지
     [SerializeField] int mNormalAttackDamage;
@@ -34,6 +34,7 @@ public class BossController : MonoBehaviour
     GameObject mPlayer;
     GameObject mBoss;
     Animator mAnimator;
+    HitMng mHitMng;
     BossState mBossState;
     bool IsAttacking;                   // 공격중을 나타내는 변수.
     bool IsDeath;                       // 생사여부 부울변수.
@@ -41,6 +42,7 @@ public class BossController : MonoBehaviour
     Vector3 mJumpAttackPoint;           // 점프공격시 점프로 날아갈 위치.
     GameObject mJumpAttackRange;
     Rigidbody mRgb;
+
 
     bool mIsJumping;                      // 점프공격 과정 중에서 지금 점프를 하여 공중에 있는 상태에 대한 부울변수.
     bool mJumpAttackEnd;                  // 점프공격이 끝났는지 판별하는 변수.
@@ -78,15 +80,15 @@ public class BossController : MonoBehaviour
         mJumpAttackRange = GameObject.Find("MonsterJumpAttackRange");
         mRgb = gameObject.GetComponentInChildren<Rigidbody>();
         mJumpAttackEnd = false;
-        
+
+        mHitMng = gameObject.GetComponentInChildren<HitMng>();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        Debug.Log(mBoss.GetComponentInChildren<Animator>().GetBool("IsJumpAttack"));
+        Debug.Log(mAnimator.speed);
 
         if(IsDeath)
             return;
@@ -95,6 +97,7 @@ public class BossController : MonoBehaviour
         {
             IsDeath = true;
             mAnimator.SetBool("IsDeath",true);
+            mRgb.velocity = Vector3.zero;
         }
 
         
@@ -312,14 +315,12 @@ public class BossController : MonoBehaviour
     void JumpAttack()
     {
 
-       
-
-      
         if (Mathf.Abs(Vector3.Magnitude(mRgb.velocity)) < 1 && transform.position.y < 10)
         {
             
             if (!mIsJumping)
             {
+                //mAnimator.speed = 0.2f;
                 float deltaX = mPlayer.transform.position.x - mBoss.transform.position.x;
                 float deltaZ = mPlayer.transform.position.z - mBoss.transform.position.z;
 
@@ -333,11 +334,14 @@ public class BossController : MonoBehaviour
 
             else
             {
+                
+
                 mJumpAttackEnd = true;
                 // 체공중에 늦춰놓았던 스피드를 다시 정상으로 돌림.
                 mAnimator.speed = 1.0f;
 
-                
+                // 보스의 점프공격 히트박스 ON
+                mHitMng.HitOn(3);
 
                 StartCoroutine(JumpAttackEnd());
 
@@ -358,11 +362,15 @@ public class BossController : MonoBehaviour
     // 땅에 착지 후에 잠깐 대기 시간을 갖기 위해 코루틴 돌릶.
     IEnumerator JumpAttackEnd()
     {
-        Debug.Log("쩜프 공격 끝들어왔고!");
 
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(0.2f);
+        
+        //점프공격 히트박스 OFF
+        mHitMng.HitOff(3);
 
-        Debug.Log("2초 기다리는거 끝");
+        yield return new WaitForSeconds(1.8f);
+
+
 
         // 다시 공격 루틴을 돌리기 위해서 공격중을 false로 전환.
         IsAttacking = false;

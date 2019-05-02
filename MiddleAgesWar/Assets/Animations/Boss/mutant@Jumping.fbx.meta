@@ -142,29 +142,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.4797048
+      - time: 0.3514153
         functionName: CastingStart
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: cd6fd67f6d23a8440b2e1d7b2bf45a72,
           type: 3}
         floatParameter: 0
         intParameter: 0
-        messageOptions: 0
-      - time: 0.60611624
-        functionName: HitOn
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 59ab677980e95954ca06411343f46752,
-          type: 3}
-        floatParameter: 0
-        intParameter: 3
-        messageOptions: 0
-      - time: 0.67805505
-        functionName: HitOff
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 59ab677980e95954ca06411343f46752,
-          type: 3}
-        floatParameter: 0
-        intParameter: 3
         messageOptions: 0
       - time: 0.77796704
         functionName: CastingStart

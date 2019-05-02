@@ -24,7 +24,7 @@ public class HitMng : MonoBehaviour {
 
   
     // 설정된 히트 박스를 킴.
-    void HitOn(int num)
+    public void HitOn(int num)
     {
         if (num == 1)
             mHitObj1.SetActive(true);
@@ -37,7 +37,7 @@ public class HitMng : MonoBehaviour {
     }
 
     // 설정된 히트 박스를 끔.
-    void HitOff(int num)
+    public void HitOff(int num)
     {
         if(num==1)
             mHitObj1.SetActive(false);

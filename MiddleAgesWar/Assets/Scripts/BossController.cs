@@ -98,6 +98,8 @@ public class BossController : MonoBehaviour
             IsDeath = true;
             mAnimator.SetBool("IsDeath",true);
             mRgb.velocity = Vector3.zero;
+            // 보스 캐릭터 소멸을 위한 코루틴 실행.
+            StartCoroutine(Extinction());
         }
 
         
@@ -114,8 +116,8 @@ public class BossController : MonoBehaviour
 
         // mBossState에 맞는 행동 취함.
        BossAction();
-        
-        
+
+       
 
     }
 
@@ -389,6 +391,12 @@ public class BossController : MonoBehaviour
         mAnimator.speed = 1.0f;
 
 
+    }
+
+    IEnumerator Extinction()
+    {
+        yield return new WaitForSeconds(4.0f);
+        Destroy(gameObject);
     }
 
     public int GetAttackDamage(string type)

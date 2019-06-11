@@ -181,7 +181,8 @@ public class BossController : MonoBehaviour
         {
             case BossState.IDLE:
 
-                mNavMeshAg.enabled = false;
+                //mNavMeshAg.enabled = false;
+                mNavMeshAg.velocity = Vector3.zero;
 
                 mAnimator.SetInteger("State", 0);
 
@@ -194,19 +195,22 @@ public class BossController : MonoBehaviour
                 break;
             case BossState.PUNCH:
                 IsAttacking = true;
-                mNavMeshAg.enabled = false;
+                //mNavMeshAg.enabled = false;
+                mNavMeshAg.velocity = Vector3.zero;
                 mAnimator.SetBool("IsPunch", true);
                 break;
             case BossState.SLASH:
 
                 IsAttacking = true;
-                mNavMeshAg.enabled = false;
+                //mNavMeshAg.enabled = false;
+                mNavMeshAg.velocity = Vector3.zero;
                 mAnimator.SetBool("IsSlash", true);
 
                 break;
             case BossState.ROAR:
                 IsAttacking = true;
-                mNavMeshAg.enabled = false;
+                //mNavMeshAg.enabled = false;
+                mNavMeshAg.velocity = Vector3.zero;
                 break;
             case BossState.JUMPATTACKREADY:
                 if (!IsAttacking)
@@ -214,6 +218,7 @@ public class BossController : MonoBehaviour
                 mJumpAttackEnd = false;
                 IsAttacking = true;
                 mNavMeshAg.enabled = false;
+                //mNavMeshAg.velocity = Vector3.zero;
                 mAnimator.SetBool("IsJumpAttack", true);
                 break;
             case BossState.JUMPATTACK:

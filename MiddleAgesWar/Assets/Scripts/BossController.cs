@@ -179,6 +179,7 @@ public class BossController : MonoBehaviour
     {
         switch (mBossState)
         {
+            // 대기
             case BossState.IDLE:
 
                 //mNavMeshAg.enabled = false;
@@ -187,18 +188,24 @@ public class BossController : MonoBehaviour
                 mAnimator.SetInteger("State", 0);
 
                 break;
+
+            // 추격
             case BossState.TRACING:
                 mNavMeshAg.enabled = true;
                 mAnimator.SetInteger("State", 1);
                 mNavMeshAg.SetDestination(mPlayer.transform.position);
                 //mNormalAttackCoolingCnt = mNormalAttackCoolTime;
                 break;
+
+            // 일반공격
             case BossState.PUNCH:
                 IsAttacking = true;
                 //mNavMeshAg.enabled = false;
                 mNavMeshAg.velocity = Vector3.zero;
                 mAnimator.SetBool("IsPunch", true);
                 break;
+
+            // 슬래쉬 (스킬1)
             case BossState.SLASH:
 
                 IsAttacking = true;
@@ -212,6 +219,8 @@ public class BossController : MonoBehaviour
                 //mNavMeshAg.enabled = false;
                 mNavMeshAg.velocity = Vector3.zero;
                 break;
+
+            // 점프공격 준비
             case BossState.JUMPATTACKREADY:
                 if (!IsAttacking)
                     StartCoroutine(JumpReady());
@@ -221,6 +230,8 @@ public class BossController : MonoBehaviour
                 //mNavMeshAg.velocity = Vector3.zero;
                 mAnimator.SetBool("IsJumpAttack", true);
                 break;
+
+            // 점프공격
             case BossState.JUMPATTACK:
 
                 if (!mJumpAttackEnd)

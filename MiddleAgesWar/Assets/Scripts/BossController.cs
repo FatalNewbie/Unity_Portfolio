@@ -83,13 +83,14 @@ public class BossController : MonoBehaviour
 
         mHitMng = gameObject.GetComponentInChildren<HitMng>();
         
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(mAnimator.speed);
 
+        
         if(IsDeath)
             return;
 
@@ -117,7 +118,8 @@ public class BossController : MonoBehaviour
         // mBossState에 맞는 행동 취함.
        BossAction();
 
-       
+        //Debug.Log(mNavMeshAg.velocity);
+        Debug.Log(mRgb.velocity);
 
     }
 
@@ -191,7 +193,7 @@ public class BossController : MonoBehaviour
 
             // 추격
             case BossState.TRACING:
-                mNavMeshAg.enabled = true;
+                //mNavMeshAg.enabled = true;
                 mAnimator.SetInteger("State", 1);
                 mNavMeshAg.SetDestination(mPlayer.transform.position);
                 //mNormalAttackCoolingCnt = mNormalAttackCoolTime;

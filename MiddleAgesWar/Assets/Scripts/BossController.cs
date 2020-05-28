@@ -30,6 +30,8 @@ public class BossController : MonoBehaviour
     // 보스 체력
     [SerializeField] int mBossHp;
 
+    [SerializeField] GameObject mHitParticlePrefab;     //보스 피격시 파티클
+
     NavMeshAgent mNavMeshAg;
     GameObject mPlayer;
     GameObject mBoss;
@@ -119,7 +121,7 @@ public class BossController : MonoBehaviour
        BossAction();
 
         //Debug.Log(mNavMeshAg.velocity);
-        Debug.Log(mRgb.velocity);
+        //Debug.Log(mRgb.velocity);
 
     }
 
@@ -440,7 +442,20 @@ public class BossController : MonoBehaviour
     public void GetDamaged(int Damage)
     {
         mBossHp -= Damage;
+
+        if (mBossHp > Damage)
+        {
+            GameObject go = Instantiate(mHitParticlePrefab, gameObject.transform);
+            StartCoroutine(ParticleRoutine(go));
+        }
     }
+
+    IEnumerator ParticleRoutine(GameObject go)
+    {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(go);
+    }
+
 
     //void JumpVelocityZero()
     //{
